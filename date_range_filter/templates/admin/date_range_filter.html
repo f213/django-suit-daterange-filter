@@ -1,0 +1,8 @@
+<div class="date_range_filter">
+    {{ spec.form.media }}
+    {% for field in spec.form %}
+        <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+
+        {{ field }}
+    {% endfor %}
+</div>

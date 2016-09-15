@@ -1,0 +1,17 @@
+.date_range_filter .add-on, .date_range_filter .datetimeshortcuts a {
+    margin-top: 5px;
+}
+
+.date_range_filter .datetimeshortcuts a:first-child {
+    display: none;
+}
+
+.date_range_filter label {
+    position: relative;
+    top: 4px;
+    margin-right: 7px;
+}
+
+.date_range_filter, .suit-date {
+    display: inline-block;
+}
