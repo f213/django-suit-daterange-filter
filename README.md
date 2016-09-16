@@ -1,6 +1,56 @@
-Features:
+# Date range filter for django-admin
+
+This is yet another filter for Django admin interface, adding possibility to lookup by date range.
+Filter is only compatible with [django-suit](https://github.com/darklow/django-suit) (does anyone use ugly stock admin now?) Main features:
+
 * Support both DateField and DateTimeField
-* Timezone support
+* User timezone support
+* Simplest ever (< 128 SLOC)
+* Well tested
 
+## Installation
+```sh
+pip install django-suit-daterange-filter
+```
 
-Exposes api (FieldListFilter), considered private
+Or directly from this repo:
+
+```sh
+pip install git+https://github.com/f213/django-suit-daterange-filter
+```
+
+Then add it to the `settings.INSTALLED_APPS`:
+
+```python
+INSTALLED_APPS = (
+    ...
+    'date_range_filter',
+)
+```
+
+## Usage:
+```python
+
+from date_range_filter import DateRangeFilter
+
+class EggAdmin(admin.ModelAdmin):
+  list_filters = (
+    'is_spam',
+    'egg_count',
+    ('timestamp', DateRangeFilter),
+  )
+
+```
+
+## Issues:
+
+If you have some JS errors about gettext, you should include django's built in i18n javascript, like this:
+```python
+
+class EggAdmin(admin.ModelAdmin):
+  ...
+  class Media:
+    js = ['/admin/jsi18n/']
+```
+
+This module is heavily inspired by [django-daterange-filter](https://github.com/tzulberti/django-datefilterspec).
