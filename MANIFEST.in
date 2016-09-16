@@ -1,2 +1,2 @@
-recursive-include date_range_filter/templates/*
-recursive-include date_range_filter/static/*
+recursive-include date_range_filter/templates *
+recursive-include date_range_filter/static *
