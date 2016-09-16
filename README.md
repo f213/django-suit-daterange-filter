@@ -1,5 +1,7 @@
 # Date range filter for django-admin
 
+[![Build Status](https://travis-ci.org/f213/django-suit-daterange-filter.svg?branch=master)](https://travis-ci.org/f213/django-suit-daterange-filter)
+
 This is yet another filter for Django admin interface, adding possibility to lookup by date range.
 Filter is only compatible with [django-suit](https://github.com/darklow/django-suit) (does anyone use ugly stock admin now?) Main features:
 
