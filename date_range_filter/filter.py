@@ -52,7 +52,9 @@ class DateRangeFilter(admin.FieldListFilter):
         return ('%s_start' % self.field_path, '%s_end' % self.field_path)
 
     def choices(self, cl):
-        return ((None, None),)
+        return [{
+            'query_string': [],
+        }]
 
     def get_form(self, request):
         return DateRangeForm(data=request.GET, field_name=self.field_path)
