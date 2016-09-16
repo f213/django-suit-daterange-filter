@@ -27,4 +27,5 @@ setup(
         'Environment :: Web Environment',
         'Operating System :: OS Independent'
     ],
+    include_package_data=True,
 )
