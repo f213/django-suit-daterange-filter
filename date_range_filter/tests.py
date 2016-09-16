@@ -1,10 +1,6 @@
 import datetime
 from copy import deepcopy as copy
-
-try:
-    from unittest.mock import MagicMock
-except ImportError:
-    from mock import MagicMock
+from unittest.mock import MagicMock
 
 import pytz
 from django.test import TestCase, override_settings

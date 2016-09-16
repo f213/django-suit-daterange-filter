@@ -10,6 +10,8 @@ Filter is only compatible with [django-suit](https://github.com/darklow/django-s
 * Simplest ever (< 128 SLOC)
 * Well tested
 
+Only python3 is supported.
+
 ## Installation
 ```sh
 pip install django-suit-daterange-filter
