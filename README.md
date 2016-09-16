@@ -14,7 +14,7 @@ Only python3 is supported.
 
 ## Installation
 ```sh
-pip install django-suit-daterange-filter
+pip install django-date-range-filter
 ```
 
 Or directly from this repo:
