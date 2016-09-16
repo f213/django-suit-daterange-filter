@@ -6,7 +6,8 @@ import pytz
 from django.test import TestCase, override_settings
 from django.utils import timezone
 
-from .filter import DateRangeFilter, DateRangeForm
+from . import DateRangeFilter
+from .filter import DateRangeForm
 
 
 class TestDateRangeForm(TestCase):
