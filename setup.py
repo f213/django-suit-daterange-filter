@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='django-date-range-filter',
-    version='0.0.1',
+    version='0.0.2',
     description='Simplest possible date range filter for Django admin',
     packages=['date_range_filter'],
     install_requires=[

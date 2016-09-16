@@ -41,7 +41,7 @@ class DateRangeForm(forms.Form):
 
     class Media:
         css = {
-            'all': ('django_admin_date_range_filter.css',),
+            'all': ('date_range_filter.css',),
         }
 
 
