@@ -20,9 +20,7 @@ Only python3 is supported.
 pip install django-suit-daterange-filter
 ```
 
-Or directly from this repo:
-
-Then add it to the `settings.INSTALLED_APPS`:
+Then add to the `settings.INSTALLED_APPS`:
 
 ```python
 INSTALLED_APPS = (
