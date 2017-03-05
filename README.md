@@ -2,8 +2,9 @@
 
 [![Build Status](https://travis-ci.org/f213/django-suit-daterange-filter.svg?branch=master)](https://travis-ci.org/f213/django-suit-daterange-filter)
 
-This is yet another filter for Django admin interface, adding possibility to lookup by date range.
-Filter is only compatible with [django-suit](https://github.com/darklow/django-suit) (does anyone use ugly stock admin now?) Main features:
+Yet another filter for Django admin interface, adding possibility to lookup by date range. The filter is only compatible with [django-suit](https://github.com/darklow/django-suit) (does anyone use ugly stock admin now?)
+
+Key features:
 
 * Support both DateField and DateTimeField
 * User timezone support
@@ -13,15 +14,12 @@ Filter is only compatible with [django-suit](https://github.com/darklow/django-s
 Only python3 is supported.
 
 ## Installation
+
 ```sh
-pip install django-date-range-filter
+pip install django-suit-daterange-filter
 ```
 
 Or directly from this repo:
-
-```sh
-pip install git+https://github.com/f213/django-suit-daterange-filter
-```
 
 Then add it to the `settings.INSTALLED_APPS`:
 
