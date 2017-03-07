@@ -4,10 +4,13 @@ python:
 
 env:
   - DJANGO=1.8.14
-  - DJANGO=1.10.1
+  - DJANGO=1.10.6
 
 install:
   - pip install Django==$DJANGO
   - python setup.py install
+  - pip install coverage
 
-script: python test.py
+script: coverage run test.py
+
+after_success: bash <(curl -s https://codecov.io/bash)
