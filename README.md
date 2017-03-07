@@ -33,6 +33,8 @@ INSTALLED_APPS = (
 ## Usage
 
 ```python
+# admin.py
+
 
 from date_range_filter import DateRangeFilter
 
