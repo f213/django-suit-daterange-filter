@@ -3,7 +3,9 @@
 [![Build Status](https://travis-ci.org/f213/django-suit-daterange-filter.svg?branch=master)](https://travis-ci.org/f213/django-suit-daterange-filter)
 [![PyPI version](https://badge.fury.io/py/django-suit-daterange-filter.svg)](https://badge.fury.io/py/django-suit-daterange-filter)
 
-Yet another filter for Django admin interface, adding possibility to lookup by date range. The filter is only compatible with [django-suit](https://github.com/darklow/django-suit) (does anyone use ugly stock admin now?)
+Yet another filter for Django admin interface, adding possibility to lookup by date range. The filter is only compatible with [django-suit](https://github.com/darklow/django-suit) (does anyone use ugly stock admin now?) and python3.
+
+![django-suit-daterange-filter](https://cloud.githubusercontent.com/assets/1592663/23668937/af6d1b54-0373-11e7-8ed2-3e4dcb9b3b54.png)
 
 Key features:
 
@@ -11,8 +13,6 @@ Key features:
 * User timezone support
 * Simplest ever (< 128 SLOC)
 * Well tested
-
-Only python3 is supported.
 
 ## Installation
 
@@ -29,7 +29,8 @@ INSTALLED_APPS = (
 )
 ```
 
-## Usage:
+## Usage
+
 ```python
 
 from date_range_filter import DateRangeFilter
@@ -43,9 +44,10 @@ class EggAdmin(admin.ModelAdmin):
 
 ```
 
-## Issues:
+## Issues
 
-If you have some JS errors about gettext, you should include django's built in i18n javascript, like this:
+If you get JS errors about gettext, you should include django's built in i18n javascript, like this:
+
 ```python
 
 class EggAdmin(admin.ModelAdmin):
