@@ -1,17 +1,19 @@
-import six
 import datetime
 from copy import deepcopy as copy
+
+import six
+from django.test import TestCase, override_settings
+from django.utils import timezone
+
+import pytz
+
+from . import DateRangeFilter
+from .filter import DateRangeForm
+
 if six.PY3:
     from unittest.mock import MagicMock
 else:
     from mock import MagicMock
-
-import pytz
-from django.test import TestCase, override_settings
-from django.utils import timezone
-
-from . import DateRangeFilter
-from .filter import DateRangeForm
 
 
 class TestDateRangeForm(TestCase):

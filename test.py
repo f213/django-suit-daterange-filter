@@ -10,8 +10,8 @@ settings.configure(
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': 'testdb.sqlite3',
-        }
-    }
+        },
+    },
 )
 
 django.setup()

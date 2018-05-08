@@ -25,7 +25,7 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 3',
         'Environment :: Web Environment',
-        'Operating System :: OS Independent'
+        'Operating System :: OS Independent',
     ],
     zip_safe=False,
     include_package_data=True,
