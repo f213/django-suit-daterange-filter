@@ -1,3 +1,4 @@
+import six
 from datetime import datetime, time
 
 from django import forms
@@ -15,7 +16,7 @@ class DateRangeForm(forms.Form):
         Automaticaly generate form fields with dynamic names based on the filtering field name
         """
         self.field_name = kwargs.pop('field_name', 'date')
-        super().__init__(*args, **kwargs)
+        super(DateRangeForm, self).__init__(*args, **kwargs)
 
         self.fields['%s_start' % self.field_name] = forms.DateField(
             widget=SuitDateWidget, label=pgettext('date', 'From'), required=False)
@@ -58,7 +59,7 @@ class DateRangeFilter(admin.FieldListFilter):
 
     def choices(self, cl):
         return [{
-            'query_string': [],
+            'query_string': [] if six.PY3 else '',
         }]
 
     def get_form(self, request):
@@ -68,7 +69,7 @@ class DateRangeFilter(admin.FieldListFilter):
         form = self.get_form(request)
 
         """
-        That's the trick — we create self.form when django tries to get our queryset.
+        That's the trick - we create self.form when django tries to get our queryset.
         This allowes to create unbount and bound form in the single place.
         """
         self.form = form

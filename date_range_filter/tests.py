@@ -1,6 +1,10 @@
+import six
 import datetime
 from copy import deepcopy as copy
-from unittest.mock import MagicMock
+if six.PY3:
+    from unittest.mock import MagicMock
+else:
+    from mock import MagicMock
 
 import pytz
 from django.test import TestCase, override_settings
@@ -20,7 +24,7 @@ class TestDateRangeForm(TestCase):
 
     @classmethod
     def setUpClass(self):
-        super().setUpClass()
+        super(TestDateRangeForm, self).setUpClass()
         self.tz = pytz.timezone('Europe/Moscow')
         timezone.activate(self.tz)
 
@@ -60,13 +64,22 @@ class TestDateRangeFilter(TestCase):
     def setUp(self):
         self.cls = copy(DateRangeFilter)
         self.cls.field_path = 'testing'
+        self.instance = self.cls(
+            field=None,
+            request=None,
+            params=[],
+            model=None,
+            model_admin=None,
+            field_path=self.cls.field_path,
+        )
+        self.instance.field_path = self.cls.field_path
 
     def test_expected_parameters(self):
-        params = self.cls.expected_parameters(self.cls)
+        params = self.cls.expected_parameters(self.instance)
         self.assertTupleEqual(params, ('testing_start', 'testing_end'))
 
     def test_filter_arguments(self):
-        args = self.cls._DateRangeFilter__get_filterargs(self.cls, 'spam', 'eggs')
+        args = self.cls._DateRangeFilter__get_filterargs(self.instance, 'spam', 'eggs')
         self.assertDictEqual(args, {
             'testing__gte': 'spam',
             'testing__lte': 'eggs',
@@ -87,6 +100,6 @@ class TestDateRangeFilter(TestCase):
 
         self.cls._DateRangeFilter__get_filterargs = MagicMock()
 
-        self.cls.queryset(self.cls, request='request-placeholder', queryset=queryset)
+        self.cls.queryset(self.instance, request='request-placeholder', queryset=queryset)
 
         self.assertEqual(queryset.filter.call_count, 1)
