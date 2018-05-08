@@ -1,7 +1,9 @@
+sudo: false
 language: python
+cache: pip
+
 python:
   - 2.7
-  - 3.4
   - 3.5
   - 3.6
 
@@ -19,3 +21,10 @@ install:
 script: coverage run test.py
 
 after_success: bash <(curl -s https://codecov.io/bash)
+
+deploy:
+  provider: pypi
+  user: $PyPiLogin
+  password: $PyPiPassword
+  on:
+    tags: true
