@@ -1,5 +1,6 @@
 language: python
 python:
+  - 2.7
   - 3.4
   - 3.5
   - 3.6
@@ -13,6 +14,7 @@ install:
   - pip install Django==$DJANGO
   - python setup.py install
   - pip install coverage
+  - pip install mock
 
 script: coverage run test.py
 
