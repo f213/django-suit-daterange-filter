@@ -70,22 +70,16 @@ class TestDateRangeFilter(TestCase):
             params=[],
             model=None,
             model_admin=None,
-            field_path=self.cls.field_path
+            field_path=self.cls.field_path,
         )
         self.instance.field_path = self.cls.field_path
 
     def test_expected_parameters(self):
-        if six.PY3:
-            params = self.cls.expected_parameters(self.cls)
-        else:
-            params = self.cls.expected_parameters(self.instance)
+        params = self.cls.expected_parameters(self.instance)
         self.assertTupleEqual(params, ('testing_start', 'testing_end'))
 
     def test_filter_arguments(self):
-        if six.PY3:
-            args = self.cls._DateRangeFilter__get_filterargs(self.cls, 'spam', 'eggs')
-        else:
-            args = self.cls._DateRangeFilter__get_filterargs(self.instance, 'spam', 'eggs')
+        args = self.cls._DateRangeFilter__get_filterargs(self.instance, 'spam', 'eggs')
         self.assertDictEqual(args, {
             'testing__gte': 'spam',
             'testing__lte': 'eggs',
@@ -106,9 +100,6 @@ class TestDateRangeFilter(TestCase):
 
         self.cls._DateRangeFilter__get_filterargs = MagicMock()
 
-        if six.PY3:
-            self.cls.queryset(self.cls, request='request-placeholder', queryset=queryset)
-        else:
-            self.cls.queryset(self.instance, request='request-placeholder', queryset=queryset)
+        self.cls.queryset(self.instance, request='request-placeholder', queryset=queryset)
 
         self.assertEqual(queryset.filter.call_count, 1)
