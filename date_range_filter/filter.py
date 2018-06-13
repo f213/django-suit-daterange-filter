@@ -16,12 +16,13 @@ class DateRangeForm(forms.Form):
         Automaticaly generate form fields with dynamic names based on the filtering field name
         """
         self.field_name = kwargs.pop('field_name', 'date')
+        self.title = kwargs.pop('title', 'Date').title()
         super(DateRangeForm, self).__init__(*args, **kwargs)
 
         self.fields['%s_start' % self.field_name] = forms.DateField(
-            widget=SuitDateWidget, label=pgettext('date', 'From'), required=False)
+            widget=SuitDateWidget(attrs={'placeholder': self.title, 'style': 'width=330px;'}), label=pgettext('date', 'From'), required=False)
         self.fields['%s_end' % self.field_name] = forms.DateField(
-            widget=SuitDateWidget, label=pgettext('date', 'To'), required=False)
+            widget=SuitDateWidget(attrs={'placeholder': self.title}), label=pgettext('date', 'To'), required=False)
 
     def start_date(self):
         if self.is_valid():
@@ -55,7 +56,7 @@ class DateRangeFilter(admin.FieldListFilter):
     template = 'admin/date_range_filter.html'
 
     def expected_parameters(self):
-        return ('%s_start' % self.field_path, '%s_end' % self.field_path)
+        return '%s_start' % self.field_path, '%s_end' % self.field_path
 
     def choices(self, cl):
         return [{
@@ -63,14 +64,14 @@ class DateRangeFilter(admin.FieldListFilter):
         }]
 
     def get_form(self, request):
-        return DateRangeForm(data=request.GET, field_name=self.field_path)
+        return DateRangeForm(data=request.GET, field_name=self.field_path, title=self.title)
 
     def queryset(self, request, queryset):
         form = self.get_form(request)
 
         """
         That's the trick - we create self.form when django tries to get our queryset.
-        This allowes to create unbount and bound form in the single place.
+        This allows to create unbount and bound form in the single place.
         """
         self.form = form
 
