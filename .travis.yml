@@ -15,8 +15,7 @@ env:
 install:
   - pip install Django==$DJANGO
   - python setup.py install
-  - pip install coverage
-  - pip install mock
+  - pip install -r dev-requirements.txt
 
 script: coverage run test.py
 

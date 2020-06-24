@@ -10,9 +10,6 @@ setup(
         'pytz',
         'django-suit',
     ],
-    setup_requires=[
-        'nose>=1.0',
-    ],
     url='https://github.com/f213/django-suit-daterange-filter',
     author='Fedor Borshev',
     author_email='f@f213.in',
